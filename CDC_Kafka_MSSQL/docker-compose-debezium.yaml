@@ -18,13 +18,13 @@ services:
       - ZOOKEEPER_CONNECT=zookeeper:2181
     networks:
       - app-network
-  postgres:
-    image: debezium/example-postgres:1.0
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
     ports:
-      - 5432:5432
+      - 1433:1433
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - MSSQL_SA_PASSWORD=1q2w3e4r@#
+      - ACCEPT_EULA=Y
     networks:
       - app-network
   connect:
@@ -33,7 +33,7 @@ services:
       - 8083:8083
     links:
       - kafka
-      - postgres
+      - sqlserver
     environment:
       - BOOTSTRAP_SERVERS=kafka:9092
       - GROUP_ID=1
