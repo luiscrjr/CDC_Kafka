@@ -1,0 +1,14 @@
+{
+    "name":"customer-connector3",
+    "config":{
+        "connector.class":"io.debezium.connector.sqlserver.SqlServerConnector",
+        "tasks.max":"1",
+        "database.hostname":"192.168.15.59",
+        "database.port":"1433",
+        "database.user":"sa",
+        "database.password":"1q2w3e4r@#$",
+        "database.dbname":"kconnect_cdc",
+        "database.server.name":"kconnectmssql",
+        "table.whitelist":"dbo.customer"
+    }
+}

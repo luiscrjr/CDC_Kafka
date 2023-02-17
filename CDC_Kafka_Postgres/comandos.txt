@@ -1,0 +1,9 @@
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" http://localhost:8083/connectors/ -d @register-postgres.json
+
+
+
+docker exec -it cdc_kafka_postgres-connect-1 bash
+
+./kafka-topics.sh --list --bootstrap-server kafka-1:9092
+
+./kafka-console.consumer.sh --bootstrap-server kafka-1:9092 --topic dbserver.inventory.customers
